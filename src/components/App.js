@@ -14,9 +14,13 @@ const App = () => {
     return () => clearInterval(timer);
   }, [val]);
 
-  const keyHandler = (e) => {
+ const keyHandler = (e) => {
     if (e.keyCode === 13) {
-      setVal(Math.trunc(e.target.value));
+      if (!isNaN(e.target.value) && e.target.value > 0)
+        setVal(Math.trunc(e.target.value));
+      else {
+        setVal(0);
+      }
     }
   };
 
